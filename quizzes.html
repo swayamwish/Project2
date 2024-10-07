@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzes - Constitution Adventures</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="quizzes.css">
+    <link rel="stylesheet" href="path/to/quizzes.css">
+    <script src="path/to/quizzes.js" defer></script>
+
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <h1>Constitution Adventures</h1>
+        </div>
+        <div class="navbar-center">
+            <img src="logo.png" alt="Website Logo" class="logo">
+        </div>
+        <div class="navbar-right">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="learn.html">Learn</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Quizzes Section -->
+    <main class="quizzes-section">
+        <h2>Test Your Knowledge with Fun Quizzes!</h2>
+        <p>Challenge yourself with our quizzes and see how well you know the Constitution. Each quiz is designed to be fun and educational!</p>
+
+        <div class="quiz-list">
+            <div class="quiz">
+                <h3>Quiz 1: The Basics of the Constitution</h3>
+                <p>Test your understanding of the fundamental principles and history of the Constitution. Suitable for beginners.</p>
+                <a href="quiz-basics.html" class="quiz-btn">Take Quiz</a>
+            </div>
+            <div class="quiz">
+                <h3>Quiz 2: Know Your Rights</h3>
+                <p>Challenge yourself on your knowledge of individual rights and freedoms guaranteed by the Constitution.</p>
+                <a href="quiz-rights.html" class="quiz-btn">Take Quiz</a>
+            </div>
+            <div class="quiz">
+                <h3>Quiz 3: Amendments and Changes</h3>
+                <p>Explore how the Constitution has evolved over time with various amendments. Perfect for those who want to dive deeper.</p>
+                <a href="quiz-amendments.html" class="quiz-btn">Take Quiz</a>
+            </div>
+        </div>
+        <script>
+          function submitQuiz() {
+              const questions = document.querySelectorAll('.question');
+              let resultsHtml = '';
+      
+              questions.forEach((question, index) => {
+                  const selectedAnswer = question.querySelector('.answer.selected');
+                  const correctAnswer = question.querySelector('.answer[data-correct="true"]');
+      
+                  if (selectedAnswer) {
+                      const isCorrect = selectedAnswer === correctAnswer;
+                      selectedAnswer.classList.add(isCorrect ? 'correct' : 'incorrect');
+                      resultsHtml += `<p><strong>Question ${index + 1}:</strong> Your answer: ${selectedAnswer.textContent}. ${isCorrect ? 'Correct!' : `Incorrect. The correct answer was: ${correctAnswer.textContent}`}</p>`;
+                  } else {
+                      resultsHtml += `<p><strong>Question ${index + 1}:</strong> You did not answer this question. The correct answer was: ${correctAnswer.textContent}</p>`;
+                  }
+              });
+      
+              document.getElementById('results').innerHTML = resultsHtml;
+              document.getElementById('results').style.display = 'block';
+          }
+      
+          document.querySelectorAll('.answer').forEach(answer => {
+              answer.addEventListener('click', function() {
+                  const question = this.closest('.question');
+                  question.querySelectorAll('.answer').forEach(a => a.classList.remove('selected'));
+                  this.classList.add('selected');
+              });
+          });
+      </script>
+      
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2024 Constitution Adventures. Learning is fun!</p>
+        </div>
+    </footer>
+
+</body>
+</html>

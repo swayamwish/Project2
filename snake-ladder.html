@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake and Ladder - Constitution Adventures</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Main styles -->
+    <link rel="stylesheet" href="index.css"> <!-- Consistent layout and theme -->
+    <link rel="stylesheet" href="snake-ladder.css"> <!-- Specific styles for the game -->
+</head>
+<body>
+
+    <!-- Navigation Bar (consistent with index.html) -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <h1>Constitution Adventures</h1>
+        </div>
+        <div class="navbar-center">
+            <img src="logo.png" alt="Website Logo" class="logo">
+        </div>
+        <div class="navbar-right">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="learn.html">Learn</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Game Section -->
+    <main class="game-container">
+        <h1>Snake and Ladder</h1>
+        <p>Enjoy the classic game of Snake and Ladder while learning about the Constitution! Roll the dice and see if you land on a ladder to climb up or a snake to slide down.</p>
+        <div class="board" id="board">
+            <!-- Grid cells will be dynamically added by JavaScript -->
+        </div>
+        <div class="controls">
+            <button id="roll-dice">Roll Dice</button>
+            <div id="dice-result" class="dice-result"></div>
+            <p id="player-position">Player Position: 1</p>
+        </div>
+    </main>
+
+    <!-- Footer (consistent with index.html) -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2024 Constitution Adventures | Learning is fun!</p>
+            <ul class="social-links">
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">YouTube</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Modal for Game Over -->
+    <div id="game-over-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Congratulations!</h2>
+            <p>You have won the game!</p>
+            <button id="new-match">New Match</button>
+            <button id="cancel">Cancel</button>
+        </div>
+    </div>
+
+    <script src="snake-ladder.js"></script> <!-- Ensure this path is correct -->
+</body>
+</html>

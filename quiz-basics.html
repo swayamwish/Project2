@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="quiz.css">
+    <style>
+        .feedback {
+            display: none;
+            padding: 10px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .answer {
+            cursor: pointer;
+            padding: 10px;
+            display: block;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .answer:hover {
+            background-color: #e9ecef;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <h1>Constitution Adventures</h1>
+        </div>
+        <div class="navbar-center">
+            <img src="logo.png" alt="Website Logo" class="logo">
+        </div>
+        <div class="navbar-right">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="learn.html">Learn</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Quiz Content -->
+    <main class="quiz-content">
+        <h2>Constitution Quiz</h2>
+        <p>Test your knowledge on the Constitution with these questions. Select your answers and click "Submit" to see the results.</p>
+
+        <form id="quiz-form">
+            <!-- Existing Questions -->
+            <div class="question">
+                <p>Which amendment guarantees the freedom of speech?</p>
+                <div class="answer" data-correct="true">First Amendment</div>
+                <div class="answer">Fourth Amendment</div>
+                <div class="answer">Fifth Amendment</div>
+                <input type="hidden" name="q1" value="First Amendment">
+            </div>
+            
+            <div class="question">
+                <p>Which amendment abolished slavery?</p>
+                <div class="answer" data-correct="true">Thirteenth Amendment</div>
+                <div class="answer">Fifteenth Amendment</div>
+                <div class="answer">Nineteenth Amendment</div>
+                <input type="hidden" name="q2" value="Thirteenth Amendment">
+            </div>
+            
+            <!-- New Questions -->
+            <div class="question">
+                <p>What does the Fifth Amendment protect?</p>
+                <div class="answer" data-correct="true">Right against self-incrimination</div>
+                <div class="answer">Right to a speedy trial</div>
+                <div class="answer">Right to vote</div>
+                <input type="hidden" name="q3" value="Right against self-incrimination">
+            </div>
+
+            <div class="question">
+                <p>Which amendment grants women the right to vote?</p>
+                <div class="answer" data-correct="true">Nineteenth Amendment</div>
+                <div class="answer">Fifteenth Amendment</div>
+                <div class="answer">Twenty-fourth Amendment</div>
+                <input type="hidden" name="q4" value="Nineteenth Amendment">
+            </div>
+
+            <div class="question">
+                <p>Which amendment limits the number of terms a President can serve?</p>
+                <div class="answer" data-correct="true">Twenty-second Amendment</div>
+                <div class="answer">Twenty-fifth Amendment</div>
+                <div class="answer">Twenty-sixth Amendment</div>
+                <input type="hidden" name="q5" value="Twenty-second Amendment">
+            </div>
+
+            <!-- Additional Questions -->
+            <div class="question">
+                <p>Which branch of government is responsible for making laws?</p>
+                <div class="answer" data-correct="true">Legislative Branch</div>
+                <div class="answer">Executive Branch</div>
+                <div class="answer">Judicial Branch</div>
+                <input type="hidden" name="q6" value="Legislative Branch">
+            </div>
+
+            <div class="question">
+                <p>Who is known as the 'Father of the Constitution'?</p>
+                <div class="answer" data-correct="true">James Madison</div>
+                <div class="answer">Alexander Hamilton</div>
+                <div class="answer">Thomas Jefferson</div>
+                <input type="hidden" name="q7" value="James Madison">
+            </div>
+
+            <button type="button" class="submit-btn" onclick="submitQuiz()">Submit</button>
+        </form>
+
+        <div id="results" class="feedback"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2024 Constitution Adventures. Learning is fun!</p>
+        </div>
+    </footer>
+
+    <script>
+        function submitQuiz() {
+            const questions = document.querySelectorAll('.question');
+            let resultsHtml = '';
+
+            questions.forEach((question, index) => {
+                const selectedAnswer = question.querySelector('.answer.selected');
+                const correctAnswer = question.querySelector('.answer[data-correct="true"]');
+
+                if (selectedAnswer) {
+                    const isCorrect = selectedAnswer === correctAnswer;
+                    selectedAnswer.classList.add(isCorrect ? 'correct' : 'incorrect');
+                    resultsHtml += `<p><strong>Question ${index + 1}:</strong> Your answer: ${selectedAnswer.textContent}. ${isCorrect ? 'Correct!' : `Incorrect. The correct answer was: ${correctAnswer.textContent}`}</p>`;
+                } else {
+                    resultsHtml += `<p><strong>Question ${index + 1}:</strong> You did not answer this question. The correct answer was: ${correctAnswer.textContent}</p>`;
+                }
+            });
+
+            document.getElementById('results').innerHTML = resultsHtml;
+            document.getElementById('results').style.display = 'block';
+        }
+
+        document.querySelectorAll('.answer').forEach(answer => {
+            answer.addEventListener('click', function() {
+                const question = this.closest('.question');
+                question.querySelectorAll('.answer').forEach(a => a.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+    </script>
+
+</body>
+</html>

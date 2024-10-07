@@ -1,0 +1,80 @@
+/* Main Content Styles for Index Page */
+.main-content {
+  padding: 40px;
+  text-align: center;
+}
+
+.introduction {
+  background-color: #FFEFD5;
+  padding: 40px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+}
+
+/* Button Styles */
+button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  margin: 20px auto; /* Center align buttons */
+}
+
+.btn-primary {
+  background-color: #FFD700;
+  color: #333;
+}
+
+.btn-primary:hover {
+  background-color: #FFC107;
+}
+
+.btn-secondary {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #45A049;
+}
+/* General Button Styles */
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  text-align: center;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #FFD700, #FFC107);
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #FFC107, #FFD700);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #4CAF50, #45A049);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #45A049, #4CAF50);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}

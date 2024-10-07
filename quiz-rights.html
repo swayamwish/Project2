@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know Your Rights Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="quiz.css">
+    <style>
+        .feedback {
+            display: none;
+            padding: 10px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .answer {
+            cursor: pointer;
+            padding: 10px;
+            display: block;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .answer:hover {
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <h1>Constitution Adventures</h1>
+        </div>
+        <div class="navbar-center">
+            <img src="logo.png" alt="Website Logo" class="logo">
+        </div>
+        <div class="navbar-right">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="learn.html">Learn</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Quiz Content -->
+    <main class="quiz-content">
+        <h2>Quiz: Know Your Rights</h2>
+        <p>Challenge yourself on your knowledge of individual rights and freedoms guaranteed by the Constitution.</p>
+
+        <div id="quiz">
+            <div class="question">
+                <p>Which amendment guarantees the freedom of speech?</p>
+                <div class="answer" data-correct="true">First Amendment</div>
+                <div class="answer">Fourth Amendment</div>
+                <div class="answer">Fifth Amendment</div>
+            </div>
+            <div class="feedback" id="feedback"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2024 Constitution Adventures. Learning is fun!</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const answers = document.querySelectorAll('.answer');
+            const feedback = document.getElementById('feedback');
+
+            answers.forEach(answer => {
+                answer.addEventListener('click', function() {
+                    const isCorrect = this.getAttribute('data-correct') === 'true';
+
+                    if (isCorrect) {
+                        this.classList.add('correct');
+                        feedback.textContent = 'Correct!';
+                        feedback.className = 'feedback correct';
+                    } else {
+                        this.classList.add('incorrect');
+                        feedback.textContent = 'Incorrect, try again!';
+                        feedback.className = 'feedback incorrect';
+                    }
+
+                    feedback.style.display = 'block';
+                    answers.forEach(a => a.removeEventListener('click', this));
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
